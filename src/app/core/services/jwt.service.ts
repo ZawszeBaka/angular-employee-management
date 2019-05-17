@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 
-/*
-    JSON WEB TOKEN
-*/
+/* JSON WEB TOKEN */
 
 @Injectable({
     providedIn: 'root'

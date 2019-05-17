@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Modules
 import { LayoutModule } from './layout/layout.module';
+
+import { ShowAuthedDirective } from './directives/show-authed.directive';
 
 @NgModule({
   imports: [
@@ -12,10 +13,11 @@ import { LayoutModule } from './layout/layout.module';
   ],
   declarations: [
     // Components
+    ShowAuthedDirective
     
   ],
   exports: [
-
+    ShowAuthedDirective
   ]
 })
 export class CoreModule { }

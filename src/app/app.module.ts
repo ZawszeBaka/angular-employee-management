@@ -1,25 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-/* -----------------------------
-      MODULES
---------------------------------*/
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { HttpTokenInterceptor } from './core/interceptors/http-token.interceptor';
+
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 
-/* -----------------------------
-      COMPONENTS
---------------------------------*/
-// Main
 import { AppComponent } from './app.component';
-
-// Layout: header, footer, sidebar 
 import { LayoutHeaderComponent } from './core/layout/layout-header/layout-header.component';
 
-
-// Using MBD-Bootstrap to render 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
+import { AuthGuard } from './core/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,6 +27,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     // Modules
     BrowserModule,
     MDBBootstrapModule.forRoot(),
+    HttpClientModule,
 
     AppRoutingModule,
 
@@ -41,7 +35,13 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     CoreModule,
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [
     AppComponent
   ]

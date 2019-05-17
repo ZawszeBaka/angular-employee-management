@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url: 'localhost:4200' // recently added
+  api_url: 'http://45.76.187.107:1420' // recently added
 };
 
 /*

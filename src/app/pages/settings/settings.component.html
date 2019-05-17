@@ -1,0 +1,25 @@
+<div class="limiter">
+  <div class="container-table100">
+    <div class="wrap-table100">
+      <div class="table100">
+        <table>
+          <thead>
+            <tr class="table100-head">
+              <th *ngFor="let headerTable of headersTable; let i = index" class="column{{headerTable.colType}} my-align-{{headerTable.align}}">{{headerTable.name}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let site of sites" >
+              <td *ngFor="let headerTable of headersTable" class="column{{headerTable.colType}} my-align-{{headerTable.align}}"> 
+                <span *ngIf="!headerTable.isSub"> {{site[headerTable.key]}}</span> 
+                <span *ngIf="headerTable.isSub">{{formatString(headerTable.content, mapSubKeys(site,headerTable.key,headerTable.subKeys))}} </span>
+              </td>
+              <!-- <td class="column6">$999.00</td> -->
+            </tr>         
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

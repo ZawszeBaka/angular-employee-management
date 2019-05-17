@@ -4,19 +4,25 @@
 
       <div class="col-md-6 offset-md-3 col-xs-12">
         <h1 class="text-xs-center"> LOG IN</h1>
+        <div class="alert alert-danger" *ngIf="message.isFailed">  
+          <strong>{{message.type}}</strong> {{message.content}} 
+        </div>  
+        <div class="alert alert-success" *ngIf="message.isSuccess">  
+          <strong>{{message.type}}</strong> {{message.content}} 
+        </div>  
         <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
           <fieldset [disabled]="isSubmit">
             <fieldset class="form-group">
               <input
-                formControlName="email"
-                placeholder="Email"
+                formControlName="username"
+                placeholder="@Username"
                 class="form-control form-control-lg"
                 type="text" />
             </fieldset>
             <fieldset class="form-group">
               <input
                 formControlName="password"
-                placeholder="Password"
+                placeholder="@Password"
                 class="form-control form-control-lg"
                 type="password" />
             </fieldset>
